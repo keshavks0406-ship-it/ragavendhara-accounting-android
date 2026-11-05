@@ -1,0 +1,8 @@
+{
+  "name": "Raghavendra \u0026 Co. Accounting",
+  "description": "Business accounting, bookkeeping, ledger management, and billing suite for Raghavendra \u0026 Co.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
