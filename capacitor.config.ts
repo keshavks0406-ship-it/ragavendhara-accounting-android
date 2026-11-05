@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'in.ragavendhara.co.accounting',
+  appId: 'in.raghavendra.co.accounting',
   appName: 'Ragavendhara & Co. Accounting',
   webDir: 'dist',
   android: {
