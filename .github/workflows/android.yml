@@ -32,9 +32,12 @@ jobs:
       - name: Build web application
         run: npm run build
 
+      - name: Use JSON Capacitor configuration
+        run: rm capacitor.config.ts
+      
       - name: Create Android project
         run: npx cap add android
-
+     
       - name: Synchronize Android project
         run: npx cap sync android
 
