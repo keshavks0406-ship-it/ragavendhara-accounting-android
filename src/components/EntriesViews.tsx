@@ -504,7 +504,7 @@ export const PurchaseEntryView: React.FC = () => {
       ) : (
         /* EDITABLE PURCHASE REGISTER */
         <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-          <div className="p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+          <div className="no-print p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2.5">
               <div className="flex items-center gap-1.5 min-w-0">
                 <Filter className="w-3.5 h-3.5 text-slate-500 shrink-0 hidden sm:inline" />
@@ -607,7 +607,7 @@ export const PurchaseEntryView: React.FC = () => {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-xs text-left">
+              <table className="register-print-table w-full text-xs text-left">
                 <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
                   <tr>
                     <th className="py-3 px-3">Date</th>
@@ -1194,7 +1194,7 @@ export const SalesEntryView: React.FC = () => {
       ) : (
         /* EDITABLE SALES REGISTER */
         <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-          <div className="p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+          <div className="no-print p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2.5">
               <div className="flex items-center gap-1.5 min-w-0">
                 <Filter className="w-3.5 h-3.5 text-slate-500 shrink-0 hidden sm:inline" />
@@ -1299,7 +1299,7 @@ export const SalesEntryView: React.FC = () => {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-xs text-left">
+              <table className="register-print-table w-full text-xs text-left">
                 <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
                   <tr>
                     <th className="py-3 px-3">Date</th>
@@ -1789,7 +1789,7 @@ export const ReceiptEntryView: React.FC = () => {
         )
       ) : (
         <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-          <div className="p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+          <div className="no-print p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2.5">
               <div className="flex items-center gap-1.5 min-w-0">
                 <Filter className="w-3.5 h-3.5 text-slate-500 shrink-0 hidden sm:inline" />
@@ -1895,7 +1895,7 @@ export const ReceiptEntryView: React.FC = () => {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-xs text-left">
+              <table className="register-print-table w-full text-xs text-left">
                 <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
                   <tr>
                     <th className="py-3 px-4">Date</th>
@@ -2240,7 +2240,7 @@ export const PaymentEntryView: React.FC = () => {
         )
       ) : (
         <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
-          <div className="p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
+          <div className="no-print p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
             <div className="flex flex-wrap items-center gap-2.5">
               <div className="flex items-center gap-1.5 min-w-0">
                 <Filter className="w-3.5 h-3.5 text-slate-500 shrink-0 hidden sm:inline" />
@@ -2346,7 +2346,7 @@ export const PaymentEntryView: React.FC = () => {
             </div>
           ) : (
             <div className="overflow-x-auto">
-              <table className="w-full text-xs text-left">
+              <table className="register-print-table w-full text-xs text-left">
                 <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
                   <tr>
                     <th className="py-3 px-4">Date</th>
