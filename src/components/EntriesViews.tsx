@@ -586,7 +586,7 @@ export const PurchaseEntryView: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
+              onClick={() => void printCurrentPage('Register', 'landscape')}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -1278,7 +1278,7 @@ export const SalesEntryView: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
+              onClick={() => void printCurrentPage('Register', 'landscape')}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -1869,7 +1869,7 @@ export const ReceiptEntryView: React.FC = () => {
               </button>
               <button
                 type="button"
-                onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
+                onClick={() => void printCurrentPage('Register', 'landscape')}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
               >
                 <Printer className="w-3.5 h-3.5" />
@@ -2320,7 +2320,7 @@ export const PaymentEntryView: React.FC = () => {
               </button>
               <button
                 type="button"
-                onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
+                onClick={() => void printCurrentPage('Register', 'landscape')}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
               >
                 <Printer className="w-3.5 h-3.5" />
