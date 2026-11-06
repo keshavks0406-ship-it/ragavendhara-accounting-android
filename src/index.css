@@ -455,3 +455,19 @@
     break-inside: avoid;
   }
 }
+
+
+/* Definitive register print rule: remove only the Actions column/cells. */
+@media print {
+  table.register-print-table th.no-print,
+  table.register-print-table td.no-print,
+  .register-print-table .no-print {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    min-width: 0 !important;
+    max-width: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+}
