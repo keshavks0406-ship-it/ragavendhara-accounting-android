@@ -469,7 +469,7 @@ export const SalesBillView: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
+              onClick={() => void printCurrentPage(`Invoice_${currentSale.invoiceNo.replace(/[^a-zA-Z0-9_-]/g, '_')}`, 'portrait')
               className="flex-1 md:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-teal-700 hover:bg-teal-800 rounded-lg shadow-sm transition-all cursor-pointer"
             >
               <Printer className="w-4 h-4" />
