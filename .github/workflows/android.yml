@@ -83,6 +83,7 @@ jobs:
               print("Successfully applied Android printer UI-thread fix.")
           PY
 
+      # Rebuild launcher assets on every APK run
       - name: Generate R and Co Android launcher icons
         run: |
           python3 -m pip install --quiet pillow
