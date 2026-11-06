@@ -273,11 +273,11 @@ export const PurchaseEntryView: React.FC = () => {
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Purchase Entry &amp; Register</h1>
           <p className="text-xs text-slate-500 mt-0.5">
-            Enter weighbridge lorry weights and tonnage rates; confirm before posting to Purchase Register
+            <span className="no-print">Enter weighbridge lorry weights and tonnage rates; confirm before posting to Purchase Register</span>
           </p>
         </div>
 
-        <div className="flex items-center gap-1 p-1 bg-slate-200/70 rounded-lg self-start sm:self-auto">
+        <div className="no-print flex items-center gap-1 p-1 bg-slate-200/70 rounded-lg self-start sm:self-auto">
           <button
             type="button"
             onClick={() => setTab('entry')}
@@ -620,7 +620,7 @@ export const PurchaseEntryView: React.FC = () => {
                     <th className="py-3 px-3 text-right">Net Wt (KG)</th>
                     <th className="py-3 px-3 text-right">Rate / Ton</th>
                     <th className="py-3 px-3 text-right">Purchase Amount</th>
-                    <th className="py-3 px-3 text-right">Actions</th>
+                    <th className="no-print py-3 px-3 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -652,7 +652,7 @@ export const PurchaseEntryView: React.FC = () => {
                       <td className="py-2.5 px-3 text-right font-mono-num font-semibold text-slate-900">
                         {formatCurrency(p.amount)}
                       </td>
-                      <td className="py-2.5 px-3 text-right whitespace-nowrap">
+                      <td className="no-print py-2.5 px-3 text-right whitespace-nowrap">
                         <div className="inline-flex items-center gap-2.5">
                           <button
                             type="button"
@@ -957,11 +957,11 @@ export const SalesEntryView: React.FC = () => {
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Sales Entry &amp; Register</h1>
           <p className="text-xs text-slate-500 mt-0.5">
-            Select a Purchase Bill to auto-populate load details, enter Sales Rate per Tonnage, and confirm to Sales Register
+            <span className="no-print">Select a Purchase Bill to auto-populate load details, enter Sales Rate per Tonnage, and confirm to Sales Register</span>
           </p>
         </div>
 
-        <div className="flex items-center gap-1 p-1 bg-slate-200/70 rounded-lg self-start sm:self-auto">
+        <div className="no-print flex items-center gap-1 p-1 bg-slate-200/70 rounded-lg self-start sm:self-auto">
           <button
             type="button"
             onClick={() => setTab('entry')}
@@ -1312,7 +1312,7 @@ export const SalesEntryView: React.FC = () => {
                     <th className="py-3 px-3 text-right">Net Wt (KG)</th>
                     <th className="py-3 px-3 text-right">Rate / Ton</th>
                     <th className="py-3 px-3 text-right">Sales Amount</th>
-                    <th className="py-3 px-3 text-right">Actions</th>
+                    <th className="no-print py-3 px-3 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -1344,7 +1344,7 @@ export const SalesEntryView: React.FC = () => {
                       <td className="py-2.5 px-3 text-right font-mono-num font-semibold text-slate-900">
                         {formatCurrency(s.amount)}
                       </td>
-                      <td className="py-2.5 px-3 text-right whitespace-nowrap">
+                      <td className="no-print py-2.5 px-3 text-right whitespace-nowrap">
                         <div className="inline-flex items-center gap-2.5">
                           <button
                             type="button"
@@ -1631,11 +1631,11 @@ export const ReceiptEntryView: React.FC = () => {
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Receipt Entry &amp; Register</h1>
           <p className="text-xs text-slate-500 mt-0.5">
-            Record customer collections in Cash or Bank; updates Customer Ledger and Cash/Bank Book
+            <span className="no-print">Record customer collections in Cash or Bank; updates Customer Ledger and Cash/Bank Book</span>
           </p>
         </div>
 
-        <div className="flex items-center gap-1 p-1 bg-slate-200/70 rounded-lg self-start sm:self-auto">
+        <div className="no-print flex items-center gap-1 p-1 bg-slate-200/70 rounded-lg self-start sm:self-auto">
           <button
             type="button"
             onClick={() => {
@@ -1904,7 +1904,7 @@ export const ReceiptEntryView: React.FC = () => {
                     <th className="py-3 px-4">Mode · Reference</th>
                     <th className="py-3 px-4">Narration</th>
                     <th className="py-3 px-4 text-right">Amount</th>
-                    <th className="py-3 px-4 text-right">Actions</th>
+                    <th className="no-print py-3 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -1925,7 +1925,7 @@ export const ReceiptEntryView: React.FC = () => {
                       <td className="py-2.5 px-4 text-right font-mono-num font-semibold text-emerald-700">
                         {formatCurrency(r.amount)}
                       </td>
-                      <td className="py-2.5 px-4 text-right whitespace-nowrap">
+                      <td className="no-print py-2.5 px-4 text-right whitespace-nowrap">
                         <div className="inline-flex items-center gap-2.5">
                           <button
                             type="button"
@@ -2084,11 +2084,11 @@ export const PaymentEntryView: React.FC = () => {
         <div>
           <h1 className="text-2xl font-bold text-slate-900">Payment Entry &amp; Register</h1>
           <p className="text-xs text-slate-500 mt-0.5">
-            Record supplier payments in Cash or Bank; updates Supplier Ledger and Cash/Bank Book
+            <span className="no-print">Record supplier payments in Cash or Bank; updates Supplier Ledger and Cash/Bank Book</span>
           </p>
         </div>
 
-        <div className="flex items-center gap-1 p-1 bg-slate-200/70 rounded-lg self-start sm:self-auto">
+        <div className="no-print flex items-center gap-1 p-1 bg-slate-200/70 rounded-lg self-start sm:self-auto">
           <button
             type="button"
             onClick={() => {
@@ -2355,7 +2355,7 @@ export const PaymentEntryView: React.FC = () => {
                     <th className="py-3 px-4">Mode · Reference</th>
                     <th className="py-3 px-4">Narration</th>
                     <th className="py-3 px-4 text-right">Amount</th>
-                    <th className="py-3 px-4 text-right">Actions</th>
+                    <th className="no-print py-3 px-4 text-right">Actions</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -2376,7 +2376,7 @@ export const PaymentEntryView: React.FC = () => {
                       <td className="py-2.5 px-4 text-right font-mono-num font-semibold text-slate-900">
                         {formatCurrency(p.amount)}
                       </td>
-                      <td className="py-2.5 px-4 text-right whitespace-nowrap">
+                      <td className="no-print py-2.5 px-4 text-right whitespace-nowrap">
                         <div className="inline-flex items-center gap-2.5">
                           <button
                             type="button"
