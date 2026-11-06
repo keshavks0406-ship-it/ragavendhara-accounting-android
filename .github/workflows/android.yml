@@ -99,21 +99,34 @@ jobs:
           font_bold = "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
 
           def make_icon(size, path, adaptive=False):
+              # Option 4: a bold white R crossed by one confident blue sweep.
+              # Adaptive foreground is transparent; Android supplies the navy background.
               image = Image.new("RGBA", (size, size), (0, 0, 0, 0) if adaptive else navy)
               draw = ImageDraw.Draw(image)
               if not adaptive:
-                  # Contemporary, simple monogram tile with no extra pictograms.
                   draw.rounded_rectangle((0, 0, size, size), radius=int(size * .22), fill=navy)
-              rfont = ImageFont.truetype(font_bold, int(size * .47))
-              subfont = ImageFont.truetype(font_regular, int(size * .16))
-              rbox = draw.textbbox((0, 0), "R", font=rfont)
-              rwidth, rheight = rbox[2] - rbox[0], rbox[3] - rbox[1]
-              rxy = ((size-rwidth)//2, int(size*.12)-rbox[1])
-              draw.text(rxy, "R", font=rfont, fill=white)
-              label = "& Co."
-              bbox = draw.textbbox((0,0), label, font=subfont)
-              tw = bbox[2]-bbox[0]
-              draw.text(((size-tw)//2, int(size*.67)-bbox[1]), label, font=subfont, fill=blue if adaptive else white)
+
+              rfont = ImageFont.truetype(font_bold, int(size * .68))
+              bbox = draw.textbbox((0, 0), "R", font=rfont)
+              rw, rh = bbox[2] - bbox[0], bbox[3] - bbox[1]
+              # Keep the monogram centered within Android's adaptive-icon safe area.
+              x = int((size - rw) * .5) - bbox[0]
+              y = int(size * .10) - bbox[1]
+              draw.text((x, y), "R", font=rfont, fill=white)
+
+              # Smooth rising blue stroke, deliberately simple at small launcher sizes.
+              points = []
+              p0 = (size * .17, size * .72)
+              p1 = (size * .39, size * .83)
+              p2 = (size * .67, size * .35)
+              p3 = (size * .86, size * .40)
+              for i in range(61):
+                  t = i / 60
+                  u = 1 - t
+                  px = u**3*p0[0] + 3*u*u*t*p1[0] + 3*u*t*t*p2[0] + t**3*p3[0]
+                  py = u**3*p0[1] + 3*u*u*t*p1[1] + 3*u*t*t*p2[1] + t**3*p3[1]
+                  points.append((int(px), int(py)))
+              draw.line(points, fill=blue, width=max(3, int(size * .055)), joint="curve")
               return image
 
           sizes = {"mdpi":48, "hdpi":72, "xhdpi":96, "xxhdpi":144, "xxxhdpi":192}
