@@ -104,7 +104,7 @@ export const PurchaseSalesStatementView: React.FC = () => {
           </button>
           <button
             type="button"
-            onClick={() => void printCurrentPage('Accounting Statement', 'landscape')
+            onClick={() => void printCurrentPage('Accounting Statement', 'landscape')}
             className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5" />
@@ -357,7 +357,7 @@ export const GrossProfitStatementView: React.FC = () => {
           </button>
           <button
             type="button"
-            onClick={() => void printCurrentPage('Accounting Statement', 'landscape')
+            onClick={() => void printCurrentPage('Accounting Statement', 'landscape')}
             className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5" />
