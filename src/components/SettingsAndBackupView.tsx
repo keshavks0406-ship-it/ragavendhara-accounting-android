@@ -11,6 +11,7 @@ import { StoredData, useAccounting } from '../context/AccountingContext';
 import { CompanySettings } from '../types/accounting';
 import { formatDate } from '../utils/formatters';
 import { shareBackupFile } from '../utils/nativeBackup';
+import { exportWorkbookFile } from '../utils/nativeActions';
 
 // ============================================================================
 // 1. INVOICE SETTINGS VIEW
@@ -295,7 +296,7 @@ export const BackupSettingsView: React.FC = () => {
   );
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-  const handleExportAllExcel = () => {
+  const handleExportAllExcel = async () => {
     const wb = XLSX.utils.book_new();
 
     const salesSheet = XLSX.utils.aoa_to_sheet([
@@ -403,7 +404,7 @@ export const BackupSettingsView: React.FC = () => {
     XLSX.utils.book_append_sheet(wb, goodsSheet, 'Goods');
 
     const dateStr = new Date().toISOString().slice(0, 10);
-    XLSX.writeFile(wb, `Raghavendra_Co_All_Data_${dateStr}.xlsx`);
+    await exportWorkbookFile(wb, `Raghavendra_Co_All_Data_${dateStr}.xlsx`);
     setBackupNotice({
       type: 'success',
       text: 'Exported all registers and masters to Excel (.xlsx).',
@@ -446,64 +447,63 @@ export const BackupSettingsView: React.FC = () => {
     }
   };
 
-  const handleRestoreFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+  const handleRestoreFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.currentTarget;
+    const file = input.files?.[0];
     if (!file) return;
 
-    const reader = new FileReader();
-    reader.onload = () => {
-      try {
-        const parsed = JSON.parse(String(reader.result || ''));
-        if (
-          !parsed ||
-          typeof parsed !== 'object' ||
-          !parsed.company ||
-          !Array.isArray(parsed.customers) ||
-          !Array.isArray(parsed.suppliers) ||
-          !Array.isArray(parsed.goods) ||
-          !Array.isArray(parsed.purchases) ||
-          !Array.isArray(parsed.sales) ||
-          !Array.isArray(parsed.receipts) ||
-          !Array.isArray(parsed.payments)
-        ) {
-          setBackupNotice({
-            type: 'error',
-            text: 'Invalid backup file format. Please select a valid JSON backup.',
-          });
-          return;
-        }
+    setBackupNotice(null);
+    try {
+      const backupText = await file.text();
+      const parsed = JSON.parse(backupText);
 
-        const confirmed = window.confirm(
-          'Restoring this backup will REPLACE all accounting data currently on this phone. Export a backup of this phone first if you need to keep it. Continue?'
-        );
-        if (!confirmed) return;
-
-        importBackupData({
-          company: parsed.company,
-          customers: parsed.customers,
-          suppliers: parsed.suppliers,
-          goods: parsed.goods,
-          purchases: parsed.purchases,
-          sales: parsed.sales,
-          receipts: parsed.receipts,
-          payments: parsed.payments,
-        });
-        setBackupNotice({
-          type: 'success',
-          text: `Restored backup (${parsed.sales.length} sales, ${parsed.purchases.length} purchases, ${parsed.customers.length} customers).`,
-        });
-      } catch {
-        setBackupNotice({
-          type: 'error',
-          text: 'Could not parse JSON file. Please check the file and try again.',
-        });
-      } finally {
-        if (fileInputRef.current) {
-          fileInputRef.current.value = '';
-        }
+      if (
+        !parsed ||
+        typeof parsed !== 'object' ||
+        !parsed.company ||
+        typeof parsed.company !== 'object' ||
+        !Array.isArray(parsed.customers) ||
+        !Array.isArray(parsed.suppliers) ||
+        !Array.isArray(parsed.goods) ||
+        !Array.isArray(parsed.purchases) ||
+        !Array.isArray(parsed.sales) ||
+        !Array.isArray(parsed.receipts) ||
+        !Array.isArray(parsed.payments)
+      ) {
+        throw new Error('Invalid backup file format. Select a valid Ragavendhara & Co. JSON backup.');
       }
-    };
-    reader.readAsText(file);
+
+      const confirmed = window.confirm(
+        'Restoring this backup will REPLACE all accounting data currently on this phone. Create a backup of this phone first if you need to keep its current data. Continue?'
+      );
+      if (!confirmed) return;
+
+      await importBackupData({
+        company: parsed.company,
+        customers: parsed.customers,
+        suppliers: parsed.suppliers,
+        goods: parsed.goods,
+        purchases: parsed.purchases,
+        sales: parsed.sales,
+        receipts: parsed.receipts,
+        payments: parsed.payments,
+      });
+
+      setBackupNotice({
+        type: 'success',
+        text: `Restore completed and saved on this phone (${parsed.sales.length} sales, ${parsed.purchases.length} purchases, ${parsed.customers.length} customers).`,
+      });
+    } catch (error) {
+      setBackupNotice({
+        type: 'error',
+        text: error instanceof Error
+          ? `Restore failed: ${error.message}`
+          : 'Restore failed. Please select a valid JSON backup and try again.',
+      });
+    } finally {
+      // Clear the selection so the same backup can be selected again if needed.
+      input.value = '';
+    }
   };
 
   return (
@@ -576,21 +576,17 @@ export const BackupSettingsView: React.FC = () => {
               </p>
             </div>
             <div>
+              <label className="block text-xs font-semibold text-slate-700 mb-2">
+                Choose a JSON backup file
+              </label>
               <input
                 ref={fileInputRef}
                 type="file"
                 accept=".json,application/json"
                 onChange={handleRestoreFile}
-                className="hidden"
-                id="backup-restore-input"
+                className="block w-full text-xs text-slate-700 file:mr-3 file:px-3.5 file:py-2 file:rounded-lg file:border-0 file:bg-slate-100 file:text-slate-700 file:font-semibold"
+                aria-label="Select JSON accounting backup file"
               />
-              <label
-                htmlFor="backup-restore-input"
-                className="w-full inline-flex items-center justify-center gap-2 px-3.5 py-2 text-xs font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg cursor-pointer"
-              >
-                <Upload className="w-4 h-4" />
-                Select Backup File
-              </label>
             </div>
           </div>
         </div>

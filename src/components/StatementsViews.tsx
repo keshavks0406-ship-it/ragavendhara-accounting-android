@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Download, Printer, Search } from 'lucide-react';
 import { useAccounting } from '../context/AccountingContext';
 import { exportToExcel, formatCurrency, formatDate, formatNumber } from '../utils/formatters';
+import { printCurrentPage } from '../utils/nativeActions';
 
 // ============================================================================
 // 1. PURCHASE AND SALES STATEMENT
@@ -103,7 +104,7 @@ export const PurchaseSalesStatementView: React.FC = () => {
           </button>
           <button
             type="button"
-            onClick={() => window.print()}
+            onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
             className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5" />
@@ -356,7 +357,7 @@ export const GrossProfitStatementView: React.FC = () => {
           </button>
           <button
             type="button"
-            onClick={() => window.print()}
+            onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
             className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
           >
             <Printer className="w-3.5 h-3.5" />

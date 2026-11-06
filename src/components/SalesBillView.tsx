@@ -20,6 +20,7 @@ import {
   formatDate,
   formatNumber,
 } from '../utils/formatters';
+import { printCurrentPage } from '../utils/nativeActions';
 
 const A4_WIDTH_PX = 794; // 210 mm at 96 DPI
 const A4_HEIGHT_PX = 1123; // 297 mm at 96 DPI
@@ -468,7 +469,7 @@ export const SalesBillView: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => window.print()}
+              onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
               className="flex-1 md:flex-none inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-teal-700 hover:bg-teal-800 rounded-lg shadow-sm transition-all cursor-pointer"
             >
               <Printer className="w-4 h-4" />

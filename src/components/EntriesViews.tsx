@@ -16,6 +16,7 @@ import {
   parseTypedDateToISO,
   todayISO,
 } from '../utils/formatters';
+import { printCurrentPage } from '../utils/nativeActions';
 
 interface TypeableDateFieldProps {
   valueISO: string;
@@ -585,7 +586,7 @@ export const PurchaseEntryView: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => window.print()}
+              onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -1277,7 +1278,7 @@ export const SalesEntryView: React.FC = () => {
             </button>
             <button
               type="button"
-              onClick={() => window.print()}
+              onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
             >
               <Printer className="w-3.5 h-3.5" />
@@ -1868,7 +1869,7 @@ export const ReceiptEntryView: React.FC = () => {
               </button>
               <button
                 type="button"
-                onClick={() => window.print()}
+                onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
               >
                 <Printer className="w-3.5 h-3.5" />
@@ -2319,7 +2320,7 @@ export const PaymentEntryView: React.FC = () => {
               </button>
               <button
                 type="button"
-                onClick={() => window.print()}
+                onClick={() => void printCurrentPage('Ragavendhara & Co. Accounting')}
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-white bg-teal-700 hover:bg-teal-800 rounded-lg cursor-pointer"
               >
                 <Printer className="w-3.5 h-3.5" />
