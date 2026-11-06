@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'in.raghavendra.co.accounting',
-  appName: 'Ragavendhara & Co. Accounting',
+  appName: 'R & Co. Accounting',
   webDir: 'dist',
   android: {
     backgroundColor: '#f8fafc',
