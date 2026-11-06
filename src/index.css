@@ -386,3 +386,44 @@
     break-inside: avoid-page !important;
   }
 }
+
+
+/* Register/report print presentation. The invoice sheet keeps its own portrait layout. */
+@media print {
+  .register-print-table th:last-child,
+  .register-print-table td:last-child {
+    display: none !important;
+  }
+
+  .print-sheet,
+  .register-print-table {
+    width: 100% !important;
+    max-width: none !important;
+  }
+
+  .print-sheet {
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
+
+  .print-sheet .overflow-x-auto,
+  .register-print-table {
+    overflow: visible !important;
+  }
+
+  table {
+    border-collapse: collapse !important;
+    page-break-inside: auto;
+  }
+
+  thead {
+    display: table-header-group;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}
