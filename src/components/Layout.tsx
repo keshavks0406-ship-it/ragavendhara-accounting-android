@@ -3,7 +3,6 @@ import {
   ArrowDownLeft,
   ArrowUpRight,
   BookOpen,
-  Briefcase,
   Building2,
   CreditCard,
   FileSpreadsheet,
@@ -139,9 +138,13 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           <button
             type="button"
             onClick={() => handleSelectNav('dashboard')}
-            className="text-base sm:text-lg font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 cursor-pointer hover:text-teal-800 transition-colors"
+            aria-label="R & Co. home"
+            className="flex items-center gap-2 whitespace-nowrap shrink-0 cursor-pointer"
           >
-            {company.companyName}
+            <span className="text-2xl font-serif font-bold tracking-[-0.08em] text-[#071b43]">R</span>
+            <span className="text-xl font-serif text-[#071b43]">&amp; Co.</span>
+            <span className="ml-1 h-6 w-px bg-slate-300" />
+            <span className="text-xs font-semibold tracking-wide text-slate-500">ACCOUNTING</span>
           </button>
         </div>
 
@@ -223,8 +226,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           >
             <div className="px-5 h-16 border-b border-slate-200 flex items-center justify-between shrink-0">
               <div className="flex items-center gap-2.5 min-w-0">
-                <div className="w-8 h-8 rounded-md bg-teal-700 text-white flex items-center justify-center shrink-0">
-                  <Briefcase className="w-4 h-4" />
+                <div className="w-9 h-9 rounded-md bg-white border border-slate-200 flex items-center justify-center shrink-0">
+                  <span className="font-serif font-bold text-lg tracking-[-0.08em] text-[#071b43]">R&amp;Co.</span>
                 </div>
                 <div className="truncate">
                   <div className="text-sm font-bold text-slate-900 truncate">{company.companyName}</div>
