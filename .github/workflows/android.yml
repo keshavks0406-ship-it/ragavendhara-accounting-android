@@ -129,16 +129,16 @@ jobs:
 
           (root / "values").mkdir(parents=True, exist_ok=True)
           (root / "values" / "ic_launcher_background.xml").write_text(
-              '<resources><color name="ic_launcher_background">#071B43</color></resources>\\n',
+              '<resources><color name="ic_launcher_background">#071B43</color></resources>\n',
               encoding="utf-8"
           )
           (root / "mipmap-anydpi-v26").mkdir(parents=True, exist_ok=True)
           (root / "mipmap-anydpi-v26" / "ic_launcher.xml").write_text(
-              '<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"><background android:drawable="@color/ic_launcher_background"/><foreground android:drawable="@drawable/ic_launcher_foreground"/></adaptive-icon>\\n',
+              '<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"><background android:drawable="@color/ic_launcher_background"/><foreground android:drawable="@drawable/ic_launcher_foreground"/></adaptive-icon>\n',
               encoding="utf-8"
           )
           (root / "mipmap-anydpi-v26" / "ic_launcher_round.xml").write_text(
-              '<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"><background android:drawable="@color/ic_launcher_background"/><foreground android:drawable="@drawable/ic_launcher_foreground"/></adaptive-icon>\\n',
+              '<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android"><background android:drawable="@color/ic_launcher_background"/><foreground android:drawable="@drawable/ic_launcher_foreground"/></adaptive-icon>\n',
               encoding="utf-8"
           )
           print("Generated R & Co. launcher icons for all Android densities.")
