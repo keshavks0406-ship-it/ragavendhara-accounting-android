@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="96" fill="#0f766e"/>
-  <rect x="76" y="76" width="360" height="360" rx="64" fill="none" stroke="#ffffff" stroke-width="20" stroke-opacity="0.25"/>
-  <text x="256" y="295" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="180" fill="#ffffff">R&amp;C</text>
+  <rect width="512" height="512" fill="#ffffff"/>
+  <g transform="translate(0 4)">
+    <text x="256" y="286" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="176" font-weight="700" letter-spacing="-10" fill="#071b43">R<tspan font-size="126" font-weight="400" dx="-2">&amp;</tspan><tspan font-size="154" dx="-1">Co.</tspan></text>
+    <path d="M92 334 C160 332 214 284 282 278 C338 273 390 282 430 274" fill="none" stroke="#0754ad" stroke-width="12" stroke-linecap="round"/>
+  </g>
 </svg>
