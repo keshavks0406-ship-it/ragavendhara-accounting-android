@@ -417,8 +417,8 @@ export const GrossProfitStatementView: React.FC = () => {
             No purchase or sales entries found for the selected criteria.
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs text-left">
+          <div className="print-table-wrap overflow-x-auto">
+            <table className="print-fit-table w-full text-xs text-left">
               <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
                 <tr>
                   <th className="py-3 px-2.5 whitespace-nowrap">Sl. No.</th>
