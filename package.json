@@ -31,7 +31,8 @@
     "@capacitor/core": "^7.4.3",
     "@capacitor/filesystem": "^7.1.4",
     "@capacitor/share": "^7.0.2",
-    "@capacitor-community/sqlite": "^7.0.0"
+    "@capacitor-community/sqlite": "^7.0.0",
+    "@capgo/capacitor-printer": "^7.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.21",
