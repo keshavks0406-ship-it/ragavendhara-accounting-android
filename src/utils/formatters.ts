@@ -1,4 +1,5 @@
 import * as XLSX from 'xlsx';
+import { exportWorkbookFile } from './nativeActions';
 
 export function formatCurrency(amount: number): string {
   const safe = Number.isFinite(amount) ? amount : 0;
@@ -197,7 +198,7 @@ export function exportToExcel(
     ? filename
     : filename.replace(/\.[^/.]+$/, '') + '.xlsx';
 
-  XLSX.writeFile(workbook, finalFilename);
+  void exportWorkbookFile(workbook, finalFilename);
 }
 
 // Deprecated alias for backwards-compatibility
