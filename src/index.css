@@ -229,3 +229,160 @@
     transform: none !important;
   }
 }
+
+/*
+ * Final native Android print geometry.
+ * Match the on-screen A4 sheet exactly: 210 x 297 mm with 10 mm inset,
+ * leaving a 190 x 277 mm content area for the two 128.5 mm bill copies
+ * and the 20 mm cutting gap.
+ */
+@media print {
+  @page {
+    size: 210mm 297mm;
+    margin: 0 !important;
+  }
+
+  html,
+  body,
+  #root {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    overflow: visible !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .preview-frame {
+    display: block !important;
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #fff !important;
+    overflow: visible !important;
+  }
+
+  .preview-scale-wrapper {
+    display: block !important;
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  .a4-sheet-container {
+    display: block !important;
+    position: relative !important;
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 10mm !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+    page-break-after: avoid !important;
+    break-after: avoid-page !important;
+  }
+
+  .a4-inner-content {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 277mm !important;
+    min-height: 277mm !important;
+    max-height: 277mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+  }
+
+  .a4-inner-content > div:not(.a4-bill-gap) {
+    display: block !important;
+    flex: 0 0 128.5mm !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 128.5mm !important;
+    min-height: 128.5mm !important;
+    max-height: 128.5mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+  }
+
+  .a4-bill-half {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 128.5mm !important;
+    min-height: 128.5mm !important;
+    max-height: 128.5mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 1.5px solid #000 !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .a4-bill-gap {
+    display: flex !important;
+    flex: 0 0 20mm !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 20mm !important;
+    min-height: 20mm !important;
+    max-height: 20mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+  }
+}
