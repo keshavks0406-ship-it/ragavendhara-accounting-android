@@ -120,3 +120,112 @@
     justify-content: center !important;
   }
 }
+
+/* Android / Save-as-PDF print layout: keep both bill copies on one A4 sheet. */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  .a4-sheet-container {
+    display: block !important;
+    position: relative !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 277mm !important;
+    min-height: 277mm !important;
+    max-height: 277mm !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    transform: none !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+    page-break-after: avoid !important;
+    break-after: avoid-page !important;
+  }
+
+  .a4-inner-content {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 277mm !important;
+    min-height: 277mm !important;
+    max-height: 277mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+  }
+
+  .a4-inner-content > div:not(.a4-bill-gap) {
+    display: block !important;
+    flex: 0 0 128.5mm !important;
+    width: 190mm !important;
+    height: 128.5mm !important;
+    min-height: 128.5mm !important;
+    max-height: 128.5mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+  }
+
+  .a4-bill-half {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 190mm !important;
+    height: 128.5mm !important;
+    min-height: 128.5mm !important;
+    max-height: 128.5mm !important;
+    box-sizing: border-box !important;
+    border: 1.5px solid #000 !important;
+    border-style: solid !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .a4-bill-gap {
+    display: flex !important;
+    flex: 0 0 20mm !important;
+    width: 190mm !important;
+    height: 20mm !important;
+    min-height: 20mm !important;
+    max-height: 20mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+  }
+
+  .preview-frame,
+  .preview-scale-wrapper {
+    display: block !important;
+    width: 190mm !important;
+    height: 277mm !important;
+    min-height: 277mm !important;
+    max-height: 277mm !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+}
