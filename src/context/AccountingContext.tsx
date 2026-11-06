@@ -62,7 +62,7 @@ interface AccountingContextValue {
 
   company: CompanySettings;
   updateCompany: (settings: CompanySettings) => void;
-  importBackupData: (backup: StoredData) => void;
+  importBackupData: (backup: StoredData) => Promise<void>;
 
   customers: Customer[];
   saveCustomer: (customer: Omit<Customer, 'id'> & { id?: string }) => Customer;
@@ -225,7 +225,10 @@ export const AccountingProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setData((prev) => ({ ...prev, company }));
   };
 
-  const importBackupData = (backup: StoredData) => {
+  const importBackupData = async (backup: StoredData): Promise<void> => {
+    // Persist the complete restored dataset first. Only update the UI after
+    // SQLite/localStorage confirms the write, so success is never reported early.
+    await saveAccountingData(backup);
     setData(backup);
   };
 
