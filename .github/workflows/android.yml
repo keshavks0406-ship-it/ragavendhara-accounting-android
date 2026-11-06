@@ -34,12 +34,54 @@ jobs:
 
       - name: Use JSON Capacitor configuration
         run: rm capacitor.config.ts
-      
+
       - name: Create Android project
         run: npx cap add android
-     
+
       - name: Synchronize Android project
         run: npx cap sync android
+
+      - name: Fix Android printer thread issue
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path("node_modules/@capgo/capacitor-printer/android/src/main/java/com/capgo/printer/Printer.java")
+
+          if not path.exists():
+              raise SystemExit("Printer.java not found. Cannot apply printing fix.")
+
+          source = path.read_text(encoding="utf-8")
+
+          pattern = re.compile(
+              r'(public void printWebView\(WebView webView, String name\) throws Exception\s*\{\s*if \(webView == null\) \{\s*throw new Exception\("WebView not available"\);\s*\}\s*)createWebPrintJob\(webView, name\);',
+              re.MULTILINE
+          )
+
+          def fix_method(match):
+              return match.group(1) + """activity.runOnUiThread(
+                  new Runnable() {
+                      @Override
+                      public void run() {
+                          createWebPrintJob(webView, name);
+                      }
+                  }
+              );"""
+
+          source, count = pattern.subn(fix_method, source, count=1)
+
+          if count == 0:
+              start = source.find("public void printWebView")
+              end = source.find("// MARK:", start)
+              if start >= 0 and "activity.runOnUiThread" in source[start:end if end >= 0 else len(source)]:
+                  print("Printer already contains the UI-thread fix.")
+              else:
+                  raise SystemExit("Could not locate the expected printer method. No unsafe changes made.")
+          else:
+              path.write_text(source, encoding="utf-8")
+              print("Successfully applied Android printer UI-thread fix.")
+          PY
 
       - name: Build Android APK
         working-directory: android
