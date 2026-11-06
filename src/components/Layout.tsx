@@ -138,13 +138,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           <button
             type="button"
             onClick={() => handleSelectNav('dashboard')}
-            aria-label="R & Co. home"
-            className="flex items-center gap-2 whitespace-nowrap shrink-0 cursor-pointer"
+            className="text-base sm:text-lg font-bold tracking-tight text-slate-900 whitespace-nowrap shrink-0 cursor-pointer hover:text-teal-800 transition-colors"
           >
-            <span className="text-2xl font-serif font-bold tracking-[-0.08em] text-[#071b43]">R</span>
-            <span className="text-xl font-serif text-[#071b43]">&amp; Co.</span>
-            <span className="ml-1 h-6 w-px bg-slate-300" />
-            <span className="text-xs font-semibold tracking-wide text-slate-500">ACCOUNTING</span>
+            {company.companyName}
           </button>
         </div>
 
