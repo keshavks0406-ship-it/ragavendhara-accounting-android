@@ -397,11 +397,6 @@
     display: none !important;
   }
 
-  .register-print-table th:last-child,
-  .register-print-table td:last-child {
-    display: table-cell !important;
-  }
-
   .print-table-wrap {
     display: block !important;
     width: 100% !important;
