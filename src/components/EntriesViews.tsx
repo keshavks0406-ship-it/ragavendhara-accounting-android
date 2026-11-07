@@ -1897,8 +1897,8 @@ export const ReceiptEntryView: React.FC = () => {
               </button>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="register-print-table w-full text-xs text-left">
+            <div className="print-table-wrap overflow-x-auto">
+              <table className="register-print-table print-fit-table w-full text-xs text-left">
                 <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
                   <tr>
                     <th className="py-3 px-4">Date</th>
@@ -2348,8 +2348,8 @@ export const PaymentEntryView: React.FC = () => {
               </button>
             </div>
           ) : (
-            <div className="overflow-x-auto">
-              <table className="register-print-table w-full text-xs text-left">
+            <div className="print-table-wrap overflow-x-auto">
+              <table className="register-print-table print-fit-table w-full text-xs text-left">
                 <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
                   <tr>
                     <th className="py-3 px-4">Date</th>
