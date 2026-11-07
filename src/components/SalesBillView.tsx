@@ -200,7 +200,7 @@ const SingleBill: React.FC<SingleBillProps> = ({
       </div>
 
       {/* 4. Bottom Row: Rupees in Words & Signature */}
-      <div className="grid grid-cols-[1fr_210px] border-t-[1.5px] border-black text-black">
+      <div className="grid grid-cols-[1fr_240px] border-t-[1.5px] border-black text-black">
         {/* Left: Rupees in words */}
         <div className="p-2 border-r-[1.5px] border-black flex items-center text-[9.5px]">
           <span className="font-bold whitespace-nowrap mr-1">Rupees:</span>
@@ -209,13 +209,13 @@ const SingleBill: React.FC<SingleBillProps> = ({
           </span>
         </div>
 
-        {/* Right: Signature */}
-        <div className="p-2 flex flex-col justify-between text-right text-[9px]">
+        {/* Right: Enlarged Signature Box */}
+        <div className="min-h-[72px] p-3 flex flex-col justify-between text-right text-[10px]">
           <div className="font-bold">
             For {company.companyName || 'RAGAVENDHARA & CO'}
           </div>
-          <div className="h-4"></div>
-          <div className="text-[8px] font-medium text-slate-800">
+          <div className="h-7"></div>
+          <div className="text-[9px] font-medium text-slate-800">
             Authorised Signatory
           </div>
         </div>
