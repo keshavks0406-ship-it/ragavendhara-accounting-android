@@ -7,7 +7,6 @@ import {
   Maximize2,
   Printer,
   RotateCcw,
-  Scissors,
   ZoomIn,
   ZoomOut,
 } from 'lucide-react';
@@ -604,19 +603,13 @@ export const SalesBillView: React.FC = () => {
                     />
                   </div>
 
-                  {/* 2. 2CM GAP: WITH CUTTING GUIDE */}
+                  {/* Horizontal separator between the Original and Duplicate copies */}
                   <div
-                    className="a4-bill-gap flex items-center justify-center text-slate-400 select-none text-[10px]"
+                    className="a4-bill-gap flex items-center"
                     style={{ height: '20mm', boxSizing: 'border-box' }}
+                    aria-hidden="true"
                   >
-                    <div className="w-full flex items-center justify-center gap-2 px-4">
-                      <span className="flex-1 border-b border-dashed border-slate-400" />
-                      <span className="flex items-center gap-1 font-mono font-medium tracking-widest text-[9.5px] uppercase text-slate-600">
-                        <Scissors className="w-3.5 h-3.5 rotate-90 text-slate-500" />
-                        Cut Along Line
-                      </span>
-                      <span className="flex-1 border-b border-dashed border-slate-400" />
-                    </div>
+                    <span className="w-full border-b border-dashed border-black" />
                   </div>
 
                   {/* 3. BOTTOM HALF: DUPLICATE (2 cm gap at top; 1 cm space from Bottom, Left, Right sheet borders) */}
