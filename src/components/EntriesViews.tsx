@@ -828,11 +828,14 @@ export const SalesEntryView: React.FC = () => {
   const [editingId, setEditingId] = useState<string | undefined>(undefined);
   const [editingInvoiceNo, setEditingInvoiceNo] = useState<string>('');
 
-  // Default to first unbilled purchase bill if available, else first purchase bill
+  // Purchases are appended when entered, so reverse insertion order to show newest first.
+  const recentFirstPurchases = useMemo(() => [...purchases].reverse(), [purchases]);
+
+  // Default to the newest unbilled purchase bill if available, else the newest purchase bill.
   const getDefaultPurchaseId = () => {
     const soldSet = new Set(sales.map((s) => s.purchaseId));
-    const unbilled = purchases.find((p) => !soldSet.has(p.id));
-    return unbilled?.id || purchases[0]?.id || '';
+    const unbilled = recentFirstPurchases.find((p) => !soldSet.has(p.id));
+    return unbilled?.id || recentFirstPurchases[0]?.id || '';
   };
 
   const [purchaseId, setPurchaseId] = useState<string>(() => getDefaultPurchaseId());
@@ -1029,7 +1032,7 @@ export const SalesEntryView: React.FC = () => {
                   onChange={(e) => setPurchaseId(e.target.value)}
                   className="w-full px-3 py-2 text-sm font-mono-num border border-slate-300 rounded-lg bg-white focus:outline-none focus:border-teal-700"
                 >
-                  {purchases.map((p) => (
+                  {recentFirstPurchases.map((p) => (
                     <option key={p.id} value={p.id}>
                       {p.billNo} — {p.vehicleNo} ({p.goodsName})
                       {soldPurchaseIds.has(p.id) ? ' [Sold]' : ''}
