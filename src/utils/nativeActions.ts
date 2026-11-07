@@ -37,12 +37,30 @@ export async function printCurrentPage(
   const previousTitle = document.title;
   const style = document.createElement('style');
   style.id = 'accounting-print-page-settings';
-  style.textContent = `@media print { @page { size: A4 ${orientation}; margin: 10mm; } }`;
+  style.textContent = `@media print { @page { size: A4 ${orientation} !important; margin: 0 !important; } }`;
   document.head.appendChild(style);
+  document.body.classList.toggle('print-portrait', orientation === 'portrait');
+
+  // Remove decimal fractions from report printouts only; preserve the sales bill values.
+  const originalText: Array<{ node: Text; value: string }> = [];
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let textNode: Node | null;
+  while ((textNode = walker.nextNode())) {
+    const parent = textNode.parentElement;
+    if (!parent || parent.closest('.a4-sheet-container') || parent.closest('.no-print')) continue;
+    const value = textNode.nodeValue || '';
+    const wholeNumberValue = value.replace(/(\\d[\\d,]*)\\.(\\d+)/g, '$1');
+    if (wholeNumberValue !== value) {
+      originalText.push({ node: textNode as Text, value });
+      textNode.nodeValue = wholeNumberValue;
+    }
+  }
   document.title = jobName;
 
   const restore = () => {
     document.getElementById('accounting-print-page-settings')?.remove();
+    document.body.classList.remove('print-portrait');
+    originalText.forEach(({ node, value }) => { node.nodeValue = value; });
     document.title = previousTitle;
     window.removeEventListener('afterprint', restore);
   };
