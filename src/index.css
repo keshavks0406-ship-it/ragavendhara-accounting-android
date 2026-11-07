@@ -620,3 +620,11 @@
     font-size: 14px !important;
   }
 }
+
+
+/* A4 landscape report tables: retain 14px text and wrap columns inside printable width. */
+@media print {
+  .register-print-table.print-fit-table { width:100% !important; min-width:0 !important; max-width:100% !important; table-layout:fixed !important; font-size:14px !important; }
+  .register-print-table.print-fit-table th, .register-print-table.print-fit-table td { white-space:normal !important; overflow-wrap:anywhere !important; padding:3px 2px !important; }
+  .print-sheet, .print-table-wrap { width:100% !important; max-width:100% !important; }
+}
