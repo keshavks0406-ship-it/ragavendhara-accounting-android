@@ -135,8 +135,9 @@ const SingleBill: React.FC<SingleBillProps> = ({
         <div className="grid grid-cols-[85px_1fr_110px_100px] flex-1 text-black text-[10px]">
           {/* Rate Column */}
           <div className="p-2 border-r-[1.5px] border-black flex flex-col justify-between text-center">
-            <div className="font-mono font-bold">
-              {formatNumber(sale.ratePerTon, 2)}/Ton
+            <div className="font-mono font-bold leading-tight">
+              <div>{formatNumber(sale.ratePerTon, 0)}</div>
+              <div className="text-[9px] font-semibold uppercase">PER TON</div>
             </div>
             <div className="font-bold text-[9px] pt-4 text-left">E&OE</div>
           </div>
