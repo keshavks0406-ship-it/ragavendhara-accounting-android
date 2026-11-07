@@ -49,7 +49,7 @@ export async function printCurrentPage(
     const parent = textNode.parentElement;
     if (!parent || parent.closest('.a4-sheet-container') || parent.closest('.no-print')) continue;
     const value = textNode.nodeValue || '';
-    const wholeNumberValue = value.replace(/(\d[\d,]*)\.(\d+)/g, '$1');
+    const wholeNumberValue = value.replace(/(?<![\d.])(\d[\d,]*)\.(\d+)(?![\d.])/g, '$1');
     if (wholeNumberValue !== value) {
       originalText.push({ node: textNode as Text, value });
       textNode.nodeValue = wholeNumberValue;
