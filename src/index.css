@@ -411,7 +411,7 @@
     max-width: 100% !important;
     table-layout: fixed !important;
     border-collapse: collapse !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
     line-height: 1.2 !important;
   }
 
@@ -428,7 +428,7 @@
     width: 100% !important;
     min-width: 0 !important;
     table-layout: auto !important;
-    font-size: 12px !important;
+    font-size: 14px !important;
   }
 
   .register-print-table th,
@@ -469,5 +469,128 @@
     max-width: 0 !important;
     padding: 0 !important;
     border: 0 !important;
+  }
+}
+
+
+/* Final landscape report and 2-up sales bill print layout. */
+@media print {
+  @page { size: A4 landscape !important; margin: 0 !important; }
+
+  html, body, #root {
+    width: 297mm !important;
+    min-width: 297mm !important;
+    max-width: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fff !important;
+    overflow: visible !important;
+  }
+
+  .print-fit-table, .register-print-table {
+    font-size: 14px !important;
+  }
+
+  .a4-sheet-container {
+    display: block !important;
+    position: relative !important;
+    width: 297mm !important;
+    min-width: 297mm !important;
+    max-width: 297mm !important;
+    height: 210mm !important;
+    min-height: 210mm !important;
+    max-height: 210mm !important;
+    margin: 0 !important;
+    padding: 10mm !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    transform: none !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+  }
+
+  .preview-frame, .preview-scale-wrapper {
+    display: block !important;
+    width: 297mm !important;
+    min-width: 297mm !important;
+    max-width: 297mm !important;
+    height: 210mm !important;
+    min-height: 210mm !important;
+    max-height: 210mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+    transform: none !important;
+  }
+
+  .a4-inner-content {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    width: 277mm !important;
+    min-width: 277mm !important;
+    max-width: 277mm !important;
+    height: 190mm !important;
+    min-height: 190mm !important;
+    max-height: 190mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .a4-inner-content > div:not(.a4-bill-gap) {
+    display: block !important;
+    flex: 0 0 128.5mm !important;
+    width: 128.5mm !important;
+    min-width: 128.5mm !important;
+    max-width: 128.5mm !important;
+    height: 190mm !important;
+    min-height: 190mm !important;
+    max-height: 190mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .a4-bill-half {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 128.5mm !important;
+    min-width: 128.5mm !important;
+    max-width: 128.5mm !important;
+    height: 190mm !important;
+    min-height: 190mm !important;
+    max-height: 190mm !important;
+    border: 3px solid #000 !important;
+    overflow: hidden !important;
+    color: #000 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .a4-bill-half, .a4-bill-half * {
+    border-color: #000 !important;
+    font-size: 14px !important;
+  }
+
+  .a4-bill-half [class*="border"] {
+    border-width: 2px !important;
+    border-style: solid !important;
+  }
+
+  .a4-bill-gap {
+    display: flex !important;
+    flex: 0 0 20mm !important;
+    width: 20mm !important;
+    min-width: 20mm !important;
+    max-width: 20mm !important;
+    height: 190mm !important;
+    min-height: 190mm !important;
+    max-height: 190mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 }
