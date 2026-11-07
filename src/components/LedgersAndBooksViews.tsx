@@ -150,8 +150,8 @@ export const CustomerLedgerView: React.FC<LedgerViewProps> = ({ initialPartyId }
             </div>
           </div>
 
-          <div className="overflow-x-auto">
-            <table className="w-full text-xs text-left">
+          <div className="print-table-wrap overflow-x-auto">
+            <table className="print-fit-table w-full text-xs text-left">
               <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
                 <tr>
                   <th className="py-3 px-4">Date</th>
@@ -520,6 +520,7 @@ export const CustomerOutstandingView: React.FC<{ onOpenLedger: (id: string) => v
       </div>
 
       <div className="print-sheet bg-white border border-slate-200 rounded-xl overflow-hidden">
+        <h2 className="print-only px-4 pt-4 text-lg font-bold text-slate-900">Customer Outstanding</h2>
         <div className="no-print p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
           <div>
             <select
@@ -558,13 +559,13 @@ export const CustomerOutstandingView: React.FC<{ onOpenLedger: (id: string) => v
           </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left">
+        <div className="print-table-wrap overflow-x-auto">
+          <table className="print-fit-table w-full text-xs text-left">
             <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
               <tr>
                 <th className="py-3 px-4 w-16">Sl. No.</th>
                 <th className="py-3 px-4">Customer Name</th>
-                <th className="py-3 px-4">Mobile Number</th>
+                
                 <th className="py-3 px-4 text-right">Opening Bal</th>
                 <th className="py-3 px-4 text-right">Total Sales (Dr)</th>
                 <th className="py-3 px-4 text-right">Total Receipts (Cr)</th>
@@ -577,7 +578,7 @@ export const CustomerOutstandingView: React.FC<{ onOpenLedger: (id: string) => v
                 <tr key={c.id} className="hover:bg-slate-50/80">
                   <td className="py-2.5 px-4 font-mono-num text-slate-500">{idx + 1}</td>
                   <td className="py-2.5 px-4 font-semibold text-slate-900">{c.name}</td>
-                  <td className="py-2.5 px-4 font-mono-num text-slate-600">{c.mobile || '—'}</td>
+                  
                   <td className="py-2.5 px-4 text-right font-mono-num">
                     {formatCurrency(c.openingBalance)} Dr
                   </td>
@@ -613,7 +614,7 @@ export const CustomerOutstandingView: React.FC<{ onOpenLedger: (id: string) => v
             </tbody>
             <tfoot className="bg-slate-50 border-t border-slate-200 font-semibold text-slate-900">
               <tr>
-                <td colSpan={6} className="py-3 px-4 text-right">
+                <td colSpan={5} className="py-3 px-4 text-right">
                   Total Customer Outstanding
                 </td>
                 <td className="py-3 px-4 text-right font-mono-num text-emerald-800">
@@ -697,6 +698,7 @@ export const SupplierOutstandingView: React.FC<{ onOpenLedger: (id: string) => v
       </div>
 
       <div className="print-sheet bg-white border border-slate-200 rounded-xl overflow-hidden">
+        <h2 className="print-only px-4 pt-4 text-lg font-bold text-slate-900">Supplier Outstanding</h2>
         <div className="no-print p-4 border-b border-slate-200 flex flex-wrap items-center justify-between gap-3">
           <div>
             <select
@@ -735,13 +737,13 @@ export const SupplierOutstandingView: React.FC<{ onOpenLedger: (id: string) => v
           </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left">
+        <div className="print-table-wrap overflow-x-auto">
+          <table className="print-fit-table w-full text-xs text-left">
             <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
               <tr>
                 <th className="py-3 px-4 w-16">Sl. No.</th>
                 <th className="py-3 px-4">Supplier Name</th>
-                <th className="py-3 px-4">Mobile Number</th>
+                
                 <th className="py-3 px-4 text-right">Opening Bal</th>
                 <th className="py-3 px-4 text-right">Total Purchases (Cr)</th>
                 <th className="py-3 px-4 text-right">Total Payments (Dr)</th>
@@ -754,7 +756,7 @@ export const SupplierOutstandingView: React.FC<{ onOpenLedger: (id: string) => v
                 <tr key={s.id} className="hover:bg-slate-50/80">
                   <td className="py-2.5 px-4 font-mono-num text-slate-500">{idx + 1}</td>
                   <td className="py-2.5 px-4 font-semibold text-slate-900">{s.name}</td>
-                  <td className="py-2.5 px-4 font-mono-num text-slate-600">{s.mobile || '—'}</td>
+                  
                   <td className="py-2.5 px-4 text-right font-mono-num">
                     {formatCurrency(s.openingBalance)} Cr
                   </td>
@@ -790,7 +792,7 @@ export const SupplierOutstandingView: React.FC<{ onOpenLedger: (id: string) => v
             </tbody>
             <tfoot className="bg-slate-50 border-t border-slate-200 font-semibold text-slate-900">
               <tr>
-                <td colSpan={6} className="py-3 px-4 text-right">
+                <td colSpan={5} className="py-3 px-4 text-right">
                   Total Supplier Outstanding
                 </td>
                 <td className="py-3 px-4 text-right font-mono-num text-amber-800">
@@ -968,8 +970,9 @@ export const CashOrBankBookView: React.FC<{ mode: 'Cash' | 'Bank' }> = ({ mode }
       </div>
 
       <div className="print-sheet bg-white border border-slate-200 rounded-xl overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left">
+        <h2 className="print-only px-4 pt-4 text-lg font-bold text-slate-900">{mode === 'Cash' ? 'Cash Book' : 'Bank Book'}</h2>
+        <div className="print-table-wrap overflow-x-auto">
+          <table className="print-fit-table w-full text-xs text-left">
             <thead className="bg-slate-50 border-b border-slate-200 font-semibold text-slate-600">
               <tr>
                 <th className="py-3 px-4">Date</th>
