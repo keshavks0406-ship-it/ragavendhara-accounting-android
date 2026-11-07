@@ -37,7 +37,7 @@ export async function printCurrentPage(
   const previousTitle = document.title;
   const style = document.createElement('style');
   style.id = 'accounting-print-page-settings';
-  style.textContent = `@media print { @page { size: A4 ${orientation} !important; margin: 0 !important; } }`;
+  style.textContent = `@media print { @page { size: ${orientation === 'portrait' ? '210mm 297mm' : '297mm 210mm'} !important; margin: 0 !important; } }`;
   document.head.appendChild(style);
   document.body.classList.toggle('print-portrait', orientation === 'portrait');
 
