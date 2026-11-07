@@ -666,3 +666,111 @@
     max-height: 20mm !important;
   }
 }
+
+
+/* Final sales invoice override: portrait A4, Original above Duplicate, horizontal cut line. */
+@media print {
+  @page { size: 210mm 297mm !important; margin: 0 !important; }
+
+  body.print-portrait,
+  body.print-portrait html,
+  body.print-portrait #root {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    background: #fff !important;
+  }
+
+  body.print-portrait .preview-frame,
+  body.print-portrait .preview-scale-wrapper {
+    display: block !important;
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none !important;
+    overflow: visible !important;
+  }
+
+  body.print-portrait .a4-sheet-container {
+    display: block !important;
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    padding: 10mm !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+  }
+
+  body.print-portrait .a4-inner-content {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: stretch !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 277mm !important;
+    min-height: 277mm !important;
+    max-height: 277mm !important;
+    overflow: hidden !important;
+  }
+
+  body.print-portrait .a4-inner-content > div:not(.a4-bill-gap) {
+    display: block !important;
+    flex: 0 0 128.5mm !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 128.5mm !important;
+    min-height: 128.5mm !important;
+    max-height: 128.5mm !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid-page !important;
+  }
+
+  body.print-portrait .a4-bill-half {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 128.5mm !important;
+    min-height: 128.5mm !important;
+    max-height: 128.5mm !important;
+    border: 3px solid #000 !important;
+    overflow: hidden !important;
+  }
+
+  body.print-portrait .a4-bill-gap {
+    display: flex !important;
+    flex: 0 0 20mm !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 20mm !important;
+    min-height: 20mm !important;
+    max-height: 20mm !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+  }
+
+  body.print-portrait .a4-bill-gap span.flex-1 {
+    border-bottom: 1.5px dashed #000 !important;
+  }
+}
