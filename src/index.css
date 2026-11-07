@@ -613,3 +613,10 @@
     border-bottom: 1.5px dashed #000 !important;
   }
 }
+
+/* Apply a consistent 14px font to every printed report, including both sales-bill copies. */
+@media print {
+  body *:not(svg):not(path):not(circle):not(rect):not(line):not(polyline):not(polygon) {
+    font-size: 14px !important;
+  }
+}
