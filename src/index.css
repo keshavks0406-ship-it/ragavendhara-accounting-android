@@ -230,74 +230,45 @@
   }
 }
 
-/*
- * Final native Android print geometry.
- * Match the on-screen A4 sheet exactly: 210 x 297 mm with 10 mm inset,
- * leaving a 190 x 277 mm content area for the two 128.5 mm bill copies
- * and the 20 mm cutting gap.
- */
+/* Native Android print geometry: reports use landscape; the sales bill opts into portrait. */
 @media print {
   @page {
-    size: 210mm 297mm;
+    size: A4 landscape;
     margin: 0 !important;
   }
 
-  html,
-  body,
-  #root {
-    width: 210mm !important;
-    min-width: 210mm !important;
-    max-width: 210mm !important;
+  html, body, #root {
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     margin: 0 !important;
     padding: 0 !important;
     background: #fff !important;
     overflow: visible !important;
   }
 
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box !important;
-  }
+  *, *::before, *::after { box-sizing: border-box !important; }
+  .no-print { display: none !important; }
 
-  .no-print {
-    display: none !important;
-  }
-
-  .preview-frame {
+  .preview-frame, .preview-scale-wrapper {
     display: block !important;
-    width: 210mm !important;
-    min-width: 210mm !important;
-    max-width: 210mm !important;
-    height: 297mm !important;
-    min-height: 297mm !important;
-    max-height: 297mm !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    background: #fff !important;
-    overflow: visible !important;
-  }
-
-  .preview-scale-wrapper {
-    display: block !important;
-    width: 210mm !important;
-    min-width: 210mm !important;
-    max-width: 210mm !important;
-    height: 297mm !important;
-    min-height: 297mm !important;
-    max-height: 297mm !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
     margin: 0 !important;
     padding: 0 !important;
     overflow: visible !important;
     transform: none !important;
   }
 
-  .a4-sheet-container {
-    display: block !important;
-    position: relative !important;
+  /* Preserve the sales bill's two-copy portrait A4 layout. */
+  body.print-portrait, body.print-portrait #root {
     width: 210mm !important;
     min-width: 210mm !important;
     max-width: 210mm !important;
@@ -305,90 +276,20 @@
     min-height: 297mm !important;
     max-height: 297mm !important;
     margin: 0 !important;
-    padding: 10mm !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    transform: none !important;
-    overflow: hidden !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid-page !important;
-    page-break-after: avoid !important;
-    break-after: avoid-page !important;
-  }
-
-  .a4-inner-content {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
-    align-items: stretch !important;
-    width: 190mm !important;
-    min-width: 190mm !important;
-    max-width: 190mm !important;
-    height: 277mm !important;
-    min-height: 277mm !important;
-    max-height: 277mm !important;
-    margin: 0 !important;
     padding: 0 !important;
     overflow: hidden !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid-page !important;
   }
 
-  .a4-inner-content > div:not(.a4-bill-gap) {
-    display: block !important;
-    flex: 0 0 128.5mm !important;
-    width: 190mm !important;
-    min-width: 190mm !important;
-    max-width: 190mm !important;
-    height: 128.5mm !important;
-    min-height: 128.5mm !important;
-    max-height: 128.5mm !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid-page !important;
-  }
-
-  .a4-bill-half {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 190mm !important;
-    min-width: 190mm !important;
-    max-width: 190mm !important;
-    height: 128.5mm !important;
-    min-height: 128.5mm !important;
-    max-height: 128.5mm !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    border: 1.5px solid #000 !important;
-    overflow: hidden !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid-page !important;
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-  }
-
-  .a4-bill-gap {
-    display: flex !important;
-    flex: 0 0 20mm !important;
-    width: 190mm !important;
-    min-width: 190mm !important;
-    max-width: 190mm !important;
-    height: 20mm !important;
-    min-height: 20mm !important;
-    max-height: 20mm !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    page-break-inside: avoid !important;
-    break-inside: avoid-page !important;
+  body.print-portrait .preview-frame,
+  body.print-portrait .preview-scale-wrapper {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
   }
 }
-
-
-
 
 /* Register and statement print refinements. Invoice sheet rules above remain untouched. */
 @media print {
@@ -627,4 +528,22 @@
   .register-print-table.print-fit-table { width:100% !important; min-width:0 !important; max-width:100% !important; table-layout:fixed !important; font-size:14px !important; }
   .register-print-table.print-fit-table th, .register-print-table.print-fit-table td { white-space:normal !important; overflow-wrap:anywhere !important; padding:3px 2px !important; }
   .print-sheet, .print-table-wrap { width:100% !important; max-width:100% !important; }
+}
+
+
+/* Landscape A4 tables: fit all report columns within the printable page width. */
+@media print {
+  .print-table-wrap { width:100% !important; max-width:100% !important; overflow:visible !important; }
+  table.print-fit-table, table.register-print-table {
+    display:table !important; width:100% !important; min-width:0 !important;
+    max-width:100% !important; table-layout:fixed !important;
+    border-collapse:collapse !important; font-size:14px !important;
+  }
+  table.print-fit-table th, table.print-fit-table td,
+  table.register-print-table th, table.register-print-table td {
+    white-space:normal !important; overflow-wrap:anywhere !important;
+    word-break:normal !important; padding:3px 2px !important;
+    vertical-align:top !important;
+  }
+  .print-sheet { width:100% !important; max-width:100% !important; overflow:visible !important; }
 }
