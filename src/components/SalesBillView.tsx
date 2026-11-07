@@ -57,8 +57,10 @@ const SingleBill: React.FC<SingleBillProps> = ({
         <div className="text-[10px] font-extrabold tracking-widest uppercase text-slate-700">
           BILL
         </div>
-        <div className="text-[14px] font-black tracking-wide uppercase font-serif text-black leading-tight mt-0.5">
-          {company.companyName || 'RAGAVENDHARA & CO'}
+        <div className="mt-0.5">
+          <span className="inline-block border border-black px-3 py-1 text-[16px] font-black tracking-wide uppercase font-serif text-black leading-tight">
+            {company.companyName || 'RAGAVENDHARA & CO'}
+          </span>
         </div>
         <div className="text-[9.5px] font-semibold text-black leading-tight mt-0.5">
           {company.addressLine1 || '2,KNS GARDEN 1st STREET,PARAPALAYAM'}
@@ -121,7 +123,7 @@ const SingleBill: React.FC<SingleBillProps> = ({
       {/* 3. Table: Rate | Particulars | Weight | Amount */}
       <div className="flex-1 flex flex-col">
         {/* Table Header */}
-        <div className="grid grid-cols-[85px_1fr_110px_110px] border-b-[1.5px] border-black bg-white text-[10px] font-bold text-center">
+        <div className="grid grid-cols-[85px_1fr_110px_100px] border-b-[1.5px] border-black bg-white text-[10px] font-bold text-center">
           <div className="py-1 px-1.5 border-r-[1.5px] border-black">Rate</div>
           <div className="py-1 px-1.5 border-r-[1.5px] border-black text-left pl-3">
             Particulars
@@ -131,7 +133,7 @@ const SingleBill: React.FC<SingleBillProps> = ({
         </div>
 
         {/* Table Content Row */}
-        <div className="grid grid-cols-[85px_1fr_110px_110px] flex-1 text-black text-[10px]">
+        <div className="grid grid-cols-[85px_1fr_110px_100px] flex-1 text-black text-[10px]">
           {/* Rate Column */}
           <div className="p-2 border-r-[1.5px] border-black flex flex-col justify-between text-center">
             <div className="font-mono font-bold">
