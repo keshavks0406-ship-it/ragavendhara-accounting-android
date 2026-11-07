@@ -594,3 +594,75 @@
     padding: 0 !important;
   }
 }
+
+
+/* Sales bill is the sole portrait printout; all other reports remain landscape. */
+@media print {
+  body.print-portrait,
+  body.print-portrait #root {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+  }
+
+  body.print-portrait .preview-frame,
+  body.print-portrait .preview-scale-wrapper {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+  }
+
+  body.print-portrait .a4-sheet-container {
+    width: 210mm !important;
+    min-width: 210mm !important;
+    max-width: 210mm !important;
+    height: 297mm !important;
+    min-height: 297mm !important;
+    max-height: 297mm !important;
+    padding: 10mm !important;
+  }
+
+  body.print-portrait .a4-inner-content {
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 277mm !important;
+    min-height: 277mm !important;
+    max-height: 277mm !important;
+  }
+
+  body.print-portrait .a4-inner-content > div:not(.a4-bill-gap) {
+    flex: 0 0 128.5mm !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 128.5mm !important;
+    min-height: 128.5mm !important;
+    max-height: 128.5mm !important;
+  }
+
+  body.print-portrait .a4-bill-half {
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 128.5mm !important;
+    min-height: 128.5mm !important;
+    max-height: 128.5mm !important;
+  }
+
+  body.print-portrait .a4-bill-gap {
+    flex: 0 0 20mm !important;
+    width: 190mm !important;
+    min-width: 190mm !important;
+    max-width: 190mm !important;
+    height: 20mm !important;
+    min-height: 20mm !important;
+    max-height: 20mm !important;
+  }
+}
